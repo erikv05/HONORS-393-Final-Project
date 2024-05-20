@@ -7,11 +7,12 @@ import librosa.display
 from sklearn.model_selection import train_test_split
 import keras
 from keras import Model, Input
-from keras.layers import Conv1D, Flatten, Dense, Dropout, SpatialDropout1D, GlobalAveragePooling1D
-from keras.optimizers import Adam
-from keras.optimizers.schedules import ExponentialDecay
-from keras.losses import SparseCategoricalCrossentropy
-from keras.metrics import SparseCategoricalAccuracy
+from tensorflow.python.keras.layers import Conv1D, Flatten, Dense, Dropout, SpatialDropout1D, GlobalAveragePooling1D
+from tensorflow.python.keras.optimizers import Adam
+from tensorflow.python.keras.optimizers import ExponentialDecay
+from tensorflow.python.keras.losses import SparseCategoricalCrossentropy
+from tensorflow.python.keras.metrics import SparseCategoricalAccuracy
 from sklearn.metrics import average_precision_score, f1_score, precision_score, recall_score, roc_auc_score
-from keras.callbacks import TensorBoard, ModelCheckpoint
+from tensorflow.python.keras.callbacks import TensorBoard, ModelCheckpoint
 import seaborn as sns
+
