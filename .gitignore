@@ -2,4 +2,9 @@
 .venv
 
 # Data
-Bird Song Dataset
+kaggle/
+data/
+
+# Output
+spect/
+topmodel/
