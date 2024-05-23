@@ -32,12 +32,29 @@ function App() {
 
 
   return (
-    <div>
-      <input type="text" value={pathInput} onChange={onInputChange} size="50"></input><br></br>
-      <button onClick={fetchData}>Predict</button>
+    // <div class="container flex flex-col items-center justify-center">
+    //   <input type="text" value={pathInput} onChange={onInputChange} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="File path"></input>
+    //   <button onClick={fetchData} class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Predict</button>
+    //   {pred && <p>Response: {pred}</p>}
+    //   {err && <p>Error: {err}</p>}
+    // </div>
+    <div class="flex items-center justify-center h-screen">
+      <div class="w-full max-w-md">
+      <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Filepath" value={pathInput} onChange={onInputChange}></input>
+        </div>
+        <div class="flex items-center justify-center">
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={fetchData}>
+          Predict
+          </button>
+        </div>
+      </form>
       {pred && <p>Response: {pred}</p>}
       {err && <p>Error: {err}</p>}
+      </div>
     </div>
+    
   );
 }
 
