@@ -12,10 +12,18 @@ def hello():
         path = request.json['path']
         if not isinstance(path, str):
             return jsonify({'msg':'Path is not a string.'}), 400
-        if len(path) < 4 or path[-4:] != '.wav':
-            return jsonify({'msg':'File at path is not a valid wavfile.'}), 400
+        if len(path) < 4:
+            return jsonify({'msg':'File at path is not a valid audio file.'}), 400
+        if 'start' not in request.json:
+            start = 0
+        else:
+            start = request.json['start']
         try:
-            pred = predict(path)
+            start = float(start)
+        except:
+            return jsonify({'msg': "Start time not a valid float."}), 400
+        try:
+            pred = predict(path, start)
             return jsonify({"res":pred}), 200
         except Exception as e:
             return jsonify({"msg": str(e)}), 500
