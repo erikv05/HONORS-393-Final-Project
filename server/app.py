@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from predict import predict
+import base64
 app = Flask(__name__)
 cors = CORS(app)
 
@@ -23,8 +24,10 @@ def hello():
         except:
             return jsonify({'msg': "Start time not a valid float."}), 400
         try:
-            pred = predict(path, start)
-            return jsonify({"res":pred}), 200
+            pred, out_path = predict(path, start)
+            with open(out_path, 'rb') as image_file:
+                base64spect = base64.b64encode(image_file.read()).decode('utf-8')
+            return jsonify({"res":pred, "image": base64spect}), 200
         except Exception as e:
             return jsonify({"msg": str(e)}), 500
     except Exception as e:

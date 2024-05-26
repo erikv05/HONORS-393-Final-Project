@@ -5,6 +5,7 @@ function App() {
   const [err, setErr] = useState('');
   const [pathInput, setPathInput] = useState('');
   const [startInput, setStartInput] = useState('');
+  const [imgSrc, setImg] = useState('');
 
   const onInputChange = (event) => {
     setPathInput(event.target.value);
@@ -26,9 +27,11 @@ function App() {
       const data = await response.json();
       if (response.ok) {
         setPred(data.res);
+        setImg(`data:image/png;base64,${data.image}`);
         setErr();
       } else {
         setPred();
+        setImg();
         setErr(data.msg);
       }
     } catch (error) {
@@ -53,6 +56,7 @@ function App() {
           </button>
         </div>
       </form>
+      {imgSrc && <img src={imgSrc} alt="Spectrogram" className="mb-4" />}
       {pred && <p>Predicted species: {pred}</p>}
       {err && <p>Error: {err}</p>}
       </div>
