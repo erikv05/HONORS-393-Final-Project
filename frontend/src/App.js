@@ -53,7 +53,7 @@ function App() {
           </button>
         </div>
       </form>
-      {pred && <p>Response: {pred}</p>}
+      {pred && <p>Predicted species: {pred}</p>}
       {err && <p>Error: {err}</p>}
       </div>
     </div>

@@ -8,8 +8,8 @@ def convert_to_wav(filepath):
     
     if filepath[-4:] == ".mp3":
         sound = AudioSegment.from_file(filepath, format="mp3")
-        sound.export(f"{re.search(pattern, filepath).group(1)}", format="wav")
-    if filepath[-4:] == ".m4a":
+        sound.export(f"converted_wavfiles/{re.findall(pattern, filepath)[0]}.wav", format="wav")
+    elif filepath[-4:] == ".m4a":
         sound = AudioSegment.from_file(filepath, format="m4a")
         sound.export(f"converted_wavfiles/{re.findall(pattern, filepath)[0]}.wav")
     else:
