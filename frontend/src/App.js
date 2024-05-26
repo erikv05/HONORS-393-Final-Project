@@ -22,7 +22,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({"path":pathInput, "start":startInput})
+        body: JSON.stringify({"path":pathInput, "start": (startInput || 0)})
       });
       const data = await response.json();
       if (response.ok) {
